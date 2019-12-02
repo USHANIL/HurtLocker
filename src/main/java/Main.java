@@ -16,7 +16,7 @@ public class Main {
         RawDataParser rp = new RawDataParser();
         rp.parseInput(output);
 
-        System.out.println(output);
+       // System.out.println(output);
 
     }
 }
