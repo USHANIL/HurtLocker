@@ -59,9 +59,9 @@ public class RawDataParser {
 
     public void printMap() {
 
-        for (HashMap.Entry<String, Integer> entry : listOfItemsandPrice.entrySet()) {
-            String str = entry.getKey();
-            Integer num = entry.getValue();
+        for (HashMap.Entry<String, Integer> entry1 : listOfItemsandPrice.entrySet()) {
+            String str = entry1.getKey();
+            Integer num = entry1.getValue();
 
 
 
@@ -69,14 +69,20 @@ public class RawDataParser {
             stringBuilder.append("name:\t"+str)
                     .append("\t\tseen: "+num+" times\n")
                     .append("=============\t\t=============\n");
-          /*  for(Map.Entry<String,Integer> entry : priceAndNumberOfPriceOccuances.entrySet()){
 
-                stringBuilder.append("Price:\t"+entry.getKey())
-                        .append("\t\tseen: "+entry.getValue()+" times\n")
-                        .append("-------------\t\t-------------\n");
-            } */
+            for(HashMap.Entry<String,Integer> entry2 : listOfItems.entrySet()){
+                String[] str1 = entry2.getKey().split("[:]");
+                Integer num1 = entry2.getValue();
+
+                if (str1[0].equals(str)) {
+                    stringBuilder.append("Price:\t" + str1[1])
+                            .append("\t\tseen: " + num1 + " times\n")
+                            .append("-------------\t\t-------------\n");
+                }
+            }
             System.out.println(stringBuilder);
         }
+        System.out.println("Errors:\t \t\t\tseen: " + listOfItems.get("Errors")+" times\n");
     }
 
 }
