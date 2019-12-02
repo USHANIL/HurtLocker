@@ -18,17 +18,16 @@ public class RawDataParser {
     public void addItemToMap(String item, String price){
 
         String correctItem = validateInput(item,price);
-       // Double correctPrice = Double.valueOf(validateInput(price));
-
         if (!correctItem.equals(""))
         {
-            //listOfItems.put(correctItem, correctPrice);
             Integer num = 1;
             if (listOfItems.containsKey(correctItem)) {num += listOfItems.get(correctItem);}
             listOfItems.put(correctItem, num);
         }
         else { //throw exception
-
+            Integer num = 1;
+            if (listOfItems.containsKey("Errors")) {num += listOfItems.get("Errors");}
+            listOfItems.put("Errors", num);
         }
 
     }
@@ -40,11 +39,18 @@ public class RawDataParser {
         String[] outputPrice = price.split("[:]");
         StringBuilder sb = new StringBuilder();
         if(outputItem.length >1 && outputPrice.length >1) {
-            sb.append(outputItem[1].toLowerCase());
+            sb.append(outputItem[1].toLowerCase().replace("0","o"));
             sb.append(":");
             sb.append(outputPrice[1].toLowerCase());
         }
         return sb.toString();
+    }
+
+    public void printMap(){
+       // for (int i=0; i<listOfItems.size(); i++) {
+            System.out.println(listOfItems);
+
+       // }
     }
 
 

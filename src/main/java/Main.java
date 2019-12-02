@@ -15,6 +15,7 @@ public class Main {
 
         RawDataParser rp = new RawDataParser();
         rp.parseInput(output);
+        rp.printMap();
 
        // System.out.println(output);
 
